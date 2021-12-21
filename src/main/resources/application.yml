@@ -1,0 +1,40 @@
+spring:
+  http:
+    multipart:
+      enabled: true
+  servlet:
+     multipart:
+       max-file-size: 128MB
+       max-request-size: 128MB
+  application:
+    name: google-calendar-service
+  kafka:
+    bootstrapservers: localhost:9092
+  profiles:
+    active: application-topics
+  datasource:
+    hikari:
+      auto-commit: false
+    url: "jdbc:postgresql://localhost:5432/postgres"
+    username: postgres
+    password: postgres
+    dbName: google-calendar
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8086
+
+eureka:
+  client:
+    registerWithEureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+google-calendar:
+    default-time-zone: Turkey
+
+application-topics:
+  notification: notification
+  google: google
+  google-error: google-error
